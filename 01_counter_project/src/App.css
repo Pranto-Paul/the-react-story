@@ -40,3 +40,9 @@
 .read-the-docs {
   color: #888;
 }
+.inputBox {
+  width: 100px;
+  border: 2px dotted white;
+  margin: 0 5px;
+  padding: 0.6em 1.2em;
+}

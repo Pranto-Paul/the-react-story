@@ -10,3 +10,17 @@ const reactElement = {
 }
 
 
+function renderElements(container, reactElement) {
+    const domElem = document.createElement(reactElement.type)
+
+    domElem.textContent = reactElement.children
+
+    for (const prop in reactElement.props) {
+        domElem.setAttribute(prop, reactElement.props[prop])
+    }
+
+    container.appendChild(domElem)
+}
+
+
+renderElements(container, reactElement)

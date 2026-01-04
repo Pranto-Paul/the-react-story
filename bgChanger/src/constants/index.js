@@ -1,0 +1,2 @@
+const ColorName = ["red", "green", "blue", "yellow", "purple", "pink", "orange", "brown", "gray", "black", "white", "cyan", "magenta", "lime", "maroon", "navy", "olive", "purple", "teal", "fuchsia"]
+export default ColorName

@@ -1,5 +1,10 @@
+import { useState } from "react"
 
 const App = () => {
+  const [password,setPassword] = useState("")
+  const [isNumberAllowed,setIsNumberAllowed] = useState(false)
+  const [isSpecialCharAllowed,setIsCharAllowed] = useState(false)
+  const [length,setLength] = useState(8)
   return (
     <div className="min-h-screen bg-slate-700 flex items-center justify-center">
       <div className="bg-slate-200 p-8 rounded shadow">

@@ -21,6 +21,9 @@ const App = () => {
   },[length,isNumberAllowed,isSpecialCharAllowed,passwordGenerator])
 
   const passwordRef = useRef(null)
+  const copyToClipBoard = () =>{
+    window.navigator.clipboard.writeText(password)
+  }
   return (
    <div className="min-h-screen bg-slate-900 flex items-center justify-center p-4">
   <div className="bg-slate-800 p-8 rounded-2xl shadow-2xl border border-slate-700 w-full max-w-md">

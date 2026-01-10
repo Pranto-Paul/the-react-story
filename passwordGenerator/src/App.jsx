@@ -22,6 +22,7 @@ const App = () => {
 
   const passwordRef = useRef(null)
   const copyToClipBoard = () =>{
+    passwordRef.current?.select()
     window.navigator.clipboard.writeText(password)
   }
   return (
@@ -42,7 +43,7 @@ const App = () => {
         className="w-full bg-slate-700 text-cyan-400 px-4 py-2 rounded-lg outline-none border border-slate-600 focus:border-cyan-500 transition-all font-mono text-lg"
         readOnly
       />
-      <button className="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg font-medium transition-colors shrink-0 shadow-lg shadow-blue-900/20">
+      <button className="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg font-medium transition-colors shrink-0 shadow-lg shadow-blue-900/20" onClick={copyToClipBoard}>
         copy
       </button>
     </div>

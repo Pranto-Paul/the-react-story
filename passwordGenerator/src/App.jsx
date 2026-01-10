@@ -18,14 +18,77 @@ const App = () => {
   }
   
   return (
-    <div className="min-h-screen bg-slate-700 flex items-center justify-center">
-      <div className="bg-slate-200 p-8 rounded shadow">
-        <h1 className="text-2xl font-bold mb-4">Password Generator</h1>
-        <p className="text-gray-600">Generate secure passwords with ease.</p>
-        <h2>{password}</h2>
-        <button onClick={()=>passwordGenerator()}>click</button>
+   <div className="min-h-screen bg-slate-900 flex items-center justify-center p-4">
+  <div className="bg-slate-800 p-8 rounded-2xl shadow-2xl border border-slate-700 w-full max-w-md">
+    <h1 className="text-3xl font-extrabold mb-2 text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-blue-500">
+      Password Generator
+    </h1>
+    <p className="text-slate-400 mb-6">Generate secure passwords with ease.</p>
+
+    <div className="flex items-center gap-2 mb-6">
+      <input
+        type="text"
+        name="password"
+        id="password"
+        className="w-full bg-slate-700 text-cyan-400 px-4 py-2 rounded-lg outline-none border border-slate-600 focus:border-cyan-500 transition-all font-mono text-lg"
+        readOnly
+      />
+      <button className="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg font-medium transition-colors shrink-0 shadow-lg shadow-blue-900/20">
+        copy
+      </button>
+    </div>
+
+    <div className="space-y-4">
+      <div className="flex flex-col gap-4 bg-slate-700/50 p-4 rounded-xl border border-slate-600">
+        {/* Length Slider */}
+        <div className="flex items-center gap-x-3">
+          <label htmlFor="length" className="text-slate-300 min-w-15">
+            Length:
+          </label>
+          <input
+            type="range"
+            name="length"
+            id="length"
+            min={6}
+            max={100}
+            className="cursor-pointer accent-blue-500 flex-1"
+          />
+          <span className="text-cyan-400 font-mono w-8 text-right">{length}</span>
+        </div>
+
+        <div className="flex items-center gap-8">
+          {/* Number Toggle */}
+          <div className="flex items-center gap-x-2">
+            <input
+              type="checkbox"
+              name="number"
+              id="number"
+              defaultChecked={isNumberAllowed} 
+              className="w-4 h-4 rounded accent-blue-500"
+            />
+            <label htmlFor="number" className="text-slate-300 cursor-pointer select-none">
+              Numbers
+            </label>
+          </div>
+
+          {/* Special Char Toggle */}
+          <div className="flex items-center gap-x-2">
+            <input
+              type="checkbox"
+              name="specialchar"
+              id="specialchar"
+              defaultChecked={isSpecialCharAllowed}
+              className="w-4 h-4 rounded accent-blue-500"
+            />
+            <label htmlFor="specialchar" className="text-slate-300 cursor-pointer select-none">
+              Special Char
+            </label>
+          </div>
+        </div>
       </div>
     </div>
+  </div>
+</div>
   )
 }
 

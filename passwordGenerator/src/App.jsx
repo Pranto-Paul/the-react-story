@@ -51,6 +51,7 @@ const App = () => {
             id="length"
             min={6}
             max={100}
+            onChange={(e)=>setLength(Number(e.target.value))}
             className="cursor-pointer accent-blue-500 flex-1"
           />
           <span className="text-cyan-400 font-mono w-8 text-right">{length}</span>
@@ -64,6 +65,7 @@ const App = () => {
               name="number"
               id="number"
               defaultChecked={isNumberAllowed} 
+              onChange={()=>setIsNumberAllowed(prev=>!prev)}
               className="w-4 h-4 rounded accent-blue-500"
             />
             <label htmlFor="number" className="text-slate-300 cursor-pointer select-none">
@@ -78,11 +80,13 @@ const App = () => {
               name="specialchar"
               id="specialchar"
               defaultChecked={isSpecialCharAllowed}
+              onChange={()=>setIsCharAllowed(prev=>!prev)}
               className="w-4 h-4 rounded accent-blue-500"
             />
             <label htmlFor="specialchar" className="text-slate-300 cursor-pointer select-none">
               Special Char
             </label>
+            
           </div>
         </div>
       </div>

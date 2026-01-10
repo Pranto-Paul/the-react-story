@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 
 const App = () => {
   const [password,setPassword] = useState("")
@@ -6,17 +6,19 @@ const App = () => {
   const [isSpecialCharAllowed,setIsCharAllowed] = useState(false)
   const [length,setLength] = useState(8)
 
-  const passwordGenerator=()=>{
+  const passwordGenerator=useCallback(()=>{
     let pass = ""
     let char = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
     if(isNumberAllowed) char+= "0123456789"
-    if(isSpecialCharAllowed) char += "#@%$&"
+    if(isSpecialCharAllowed) char += "#@%$&@#$&"
     for(let i=0; i<length; i++){
       pass += char.charAt(Math.floor(Math.random()*char.length))
     }
     setPassword(pass)
-  }
-  
+  },[length,isSpecialCharAllowed,isNumberAllowed])
+  useEffect(()=>{
+    passwordGenerator()
+  },[length,isNumberAllowed,isSpecialCharAllowed,passwordGenerator])
   return (
    <div className="min-h-screen bg-slate-900 flex items-center justify-center p-4">
   <div className="bg-slate-800 p-8 rounded-2xl shadow-2xl border border-slate-700 w-full max-w-md">
@@ -30,6 +32,7 @@ const App = () => {
         type="text"
         name="password"
         id="password"
+        value={password}
         className="w-full bg-slate-700 text-cyan-400 px-4 py-2 rounded-lg outline-none border border-slate-600 focus:border-cyan-500 transition-all font-mono text-lg"
         readOnly
       />

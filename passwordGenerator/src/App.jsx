@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react"
+import { useCallback, useEffect, useRef, useState } from "react"
 
 const App = () => {
   const [password,setPassword] = useState("")
@@ -19,6 +19,8 @@ const App = () => {
   useEffect(()=>{
     passwordGenerator()
   },[length,isNumberAllowed,isSpecialCharAllowed,passwordGenerator])
+
+  const passwordRef = useRef(null)
   return (
    <div className="min-h-screen bg-slate-900 flex items-center justify-center p-4">
   <div className="bg-slate-800 p-8 rounded-2xl shadow-2xl border border-slate-700 w-full max-w-md">
@@ -33,6 +35,7 @@ const App = () => {
         name="password"
         id="password"
         value={password}
+        ref={passwordRef}
         className="w-full bg-slate-700 text-cyan-400 px-4 py-2 rounded-lg outline-none border border-slate-600 focus:border-cyan-500 transition-all font-mono text-lg"
         readOnly
       />

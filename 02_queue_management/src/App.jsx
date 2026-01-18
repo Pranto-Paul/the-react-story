@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Display from './components/Display';
 import QueueForm from './components/QueueForm';
 
 const App = () => {
@@ -6,8 +7,18 @@ const App = () => {
   const addToQueue = (customer) => {
     setQueue([...queue, { ...customer, id: Date.now(), status: 'waiting' }]);
   };
-  const updateQueue = (id, customer) => {};
-  const removeFromQueue = (id) => {};
+  const updateStatus = (id, newStatus) => {
+    setQueue(
+      queue.map((customer) => {
+        return customer.id === id
+          ? { ...customer, status: newStatus }
+          : customer;
+      })
+    );
+  };
+  const removeFromQueue = (id) => {
+    setQueue(queue.filter((customer) => customer.id !== id));
+  };
 
   return (
     <div className="h-screen bg-slate-900 text-white flex flex-col">
@@ -21,7 +32,13 @@ const App = () => {
         <div className="flex-1 bg-slate-800 rounded-lg shadow-lg p-4">
           <QueueForm onAdd={addToQueue} />
         </div>
-        <div className="flex-3 bg-slate-800 rounded-lg shadow-lg p-4"></div>
+        <div className="flex-3 bg-slate-800 rounded-lg shadow-lg p-4">
+          <Display
+            queue={queue}
+            onUpdate={updateStatus}
+            onRemove={removeFromQueue}
+          />
+        </div>
       </main>
     </div>
   );

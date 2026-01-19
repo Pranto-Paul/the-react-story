@@ -7,6 +7,7 @@ export function useCart() {
       return saved_cart ? JSON.parse(saved_cart) : [];
     } catch (error) {
       console.error('failed to load cart fro localestorage', error);
+      return [];
     }
   });
   useEffect(() => {
